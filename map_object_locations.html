@@ -1,0 +1,78 @@
+<!DOCTYPE HTML>
+<meta charset="utf-8">
+<head>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.2.0/dist/leaflet.css"
+  integrity="sha512-M2wvCLH6DSRazYeZRIm1JnYyh22purTM+FDB5CsyxtQJYeKq83arPe5wgbNmcFXGqiSH2XR8dT/fJISVA1r/zQ=="
+  crossorigin=""/>
+  <!-- Make sure you put this AFTER Leaflet's CSS -->
+  <script src="https://unpkg.com/leaflet@1.2.0/dist/leaflet.js"
+  integrity="sha512-lInM/apFSqyy1o6s89K4iQUKg6ppXEgsVxT35HbzUupEVRh2Eu9Wdl4tHj7dZO0s1uvplcYGmt3498TtHq+log=="
+  crossorigin=""></script>
+  <script src="https://github.com/evanplaice/jquery-csv.git"></script>
+
+  <style>
+    #mapid { height: 1000px; }
+  </style>
+
+</head>
+<body>
+  <div id="mapid"></div>
+
+  <script>
+    var mymap = L.map('mapid')
+
+    mymap.setView([56.002318, -3.-4.734014], 5); // Helensburgh
+
+    L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+    attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
+    maxZoom: 5,
+    id: 'mapbox.streets',
+    accessToken: 'pk.eyJ1IjoidGhlZ29vc2UyMCIsImEiOiJjamE3NWxzamxhdGI4MnFwYXp0enNsdHc5In0.tXSCQA5gRyZr6KrLnpqPFg'}).addTo(mymap);
+
+    // colored icons
+    var greenIcon = new L.Icon({
+      iconUrl: 'https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-green.png',
+      shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+      iconSize: [25, 41],
+      iconAnchor: [12, 41],
+      popupAnchor: [1, -34],
+      shadowSize: [41, 41]
+    });
+    var yellowIcon = new L.Icon({
+      iconUrl: 'https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-yellow.png',
+      shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+      iconSize: [25, 41],
+      iconAnchor: [12, 41],
+      popupAnchor: [1, -34],
+      shadowSize: [41, 41]
+    });
+    var violetIcon = new L.Icon({
+      iconUrl: 'https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-violet.png',
+      shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+      iconSize: [25, 41],
+      iconAnchor: [12, 41],
+      popupAnchor: [1, -34],
+      shadowSize: [41, 41]
+    });
+
+    // Scotland Lat & Long: TBD
+    var F1 = L.marker([50.908596, 0.249424], {icon: greenIcon}).addTo(mymap);
+    F1.bindPopup("<b>Window Seat Arundel</b><br>From: Sussex, England<br>Date Produced: 1903<br>Description: A white painted wooden window seat. The seat has a rectangular padded back above cushioned seats and rests on square supports flanked on either side by rectangular columns. The rectangular columns are headed by stylised flowerheads each carved with four rectangular medallions. The sides of the seat are fitted with three open book divisions. The seat is upholersted with straw coloured hessian and decorated with a pink rose stencil. The whole is reconstructed based on the original.").openPopup();
+    var F2 = L.marker([53.727020, -1.857540], {icon: yellowIcon}).addTo(mymap);
+    F2.bindPopup("<b>Carpet</b><br>From: Halifax<br>Date Produced: 1900-1999<br>Description: A reproduction beige wool carpet with pink and fawn squares.").openPopup();
+/*
+    var circle = L.circle([51.508, -0.11], {
+      color: 'red',
+      fillcolor: '#f03',
+      fillOpacity: 0.5,
+      radius: 5000
+    }).addTo(mymap)
+    var polygon = L.polygon([
+    [51.509, -0.08],
+    [51.503, -0.06],
+    [51.51, -0.047]
+    ]).addTo(mymap);*/
+
+
+  </script>
+</body>
